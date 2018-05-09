@@ -200,7 +200,8 @@ CREATE TABLE `JobNotifications` (
   FOREIGN KEY (`jid`) REFERENCES `JobInfo` (`jid`),
   FOREIGN KEY (`cid`) REFERENCES `Company` (`cid`));
 
-INSERT INTO `JobNotifications` VALUES ('S001', 'J001', 'C02', '2018-02-03 00:00:00', 'Viewed');
-INSERT INTO `JobNotifications` VALUES ('S001', 'J002', 'C02', '2018-04-05 23:23:23', 'New');
--- 
+INSERT INTO `JobNotifications` VALUES ('S001', 'J001', 'C02', '2018-04-14 00:00:00', 'Viewed');
+INSERT INTO `JobNotifications` VALUES ('S001', 'J002', 'C02', '2018-04-05 00:00:00', 'New');
+INSERT INTO `JobNotifications` VALUES ('S001', 'J003', 'C02', '2018-01-01 00:00:00', 'New');
+
 -- 
