@@ -18,13 +18,8 @@
 		$cindustry = $_POST['cindustry'];
 		$cpassword = $_POST['cpassword'];
 		
-		$host="127.0.0.1";
-		$user="root";
-		$password="";
-		$dbname="jobhunter";
-
-		$conn = mysqli_connect($host, $user, $password, $dbname);
-		if (!$conn) {die("Connection failed: " . mysqli_connect_error());}
+		include 'connectDB.php';
+		$conn = connectDB();
 
         if(isset($_POST['cname'])){
 

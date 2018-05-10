@@ -18,13 +18,8 @@
 	$cid = $_POST['cid'];
 	$jpostdate = $_POST['jpostdate'];
 
-	$host="127.0.0.1";
-	$user="root";
-	$password="";
-	$dbname="jobhunter";
-
-	$conn = mysqli_connect($host, $user, $password, $dbname);
-	if (!$conn) {die("Connection failed: " . mysqli_connect_error());}
+	include 'connectDB.php';
+	$conn = connectDB();
 		 	
     $query1 = "insert into JobInfo (`jid`,`cid`,`jcity`,`jstate`,`jtitle`,`jsalary`,`jdegree`,`jmajor`,`jpostdate`,`jdesc`) SELECT      CONCAT('J',             CAST(LPAD(CONVERT( SUBSTR(MAX(jid), 3) , UNSIGNED INTEGER) + 1,                         3,                         '0')                 AS CHAR (5))) AS temp_ind, '".$cid."', '".$jcity."', '".$jstate."', '".$jtitle."', '".$jsalary."', '".$jdegree."', '".$jmajor."', '".$jpostdate."', '".$jdesc."' FROM     JobInfo";
     $result1 = mysqli_query($conn, $query1) or die('Query failed: ' . mysqli_error($conn));

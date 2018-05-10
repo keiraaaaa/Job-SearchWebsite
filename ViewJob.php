@@ -2,8 +2,14 @@
 	include 'connectDB.php';
 	session_start();
 
+	if 	(isset($_POST['sid'])) {
+	$sid = $_POST['sid'];
+	}
+	if (isset($_SESSION['sid'])) {
 	$sid = $_SESSION['sid'];
-	if (isset($_POST['jobname'])) {
+	}
+
+ 	if (isset($_POST['jobname'])) {
 	$keyword = $_POST['jobname'];
 	}
 	if (isset($_SESSION['jobname'])) {
@@ -33,6 +39,7 @@
 			echo "<p>Desired Degree: ".$row1["jdegree"]."</P>";
 			echo "<p>Desired Major: ".$row1["jmajor"]."</P>";
 			echo "<button type='submit' name='apply' value='".$row1["jid"]."'>Apply</button>";
+			echo "<button type='submit' name='forward' formaction='Forward_Search.php' value='".$row1["jid"]."'>Forward</button>";
 			}
 		}
 		if (mysqli_num_rows($result2) > 0) {
@@ -46,6 +53,7 @@
 			echo "<p><strong>Qualification: </strong></P>";
 			echo "<p>Desired Degree: ".$row2["jdegree"]."</P>";
 			echo "<p>Desired Major: ".$row2["jmajor"]."</P>";
+			echo "<button type='submit' name='forward' formaction='Forward_Search.php' value='".$row2["jid"]."'>Forward</button>";
 			}
 		}
 	    echo ""."<p class='change_link'><a href='mainPage.php' class='tosignup'>Return to the main page</a></p>";
@@ -56,7 +64,6 @@
 	</table>
 
 </form>
-
 
 <!-- <!DOCTYPE html>
 <html> -->

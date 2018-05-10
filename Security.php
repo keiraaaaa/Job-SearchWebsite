@@ -12,13 +12,8 @@ ob_start();
 	$id = $_POST['cid'];
 	$cpassword = $_POST['cpassword'];
 
-	$host="127.0.0.1";
-	$user="root";
-	$password="";
-	$dbname="jobhunter";
-
-	$conn = mysqli_connect($host, $user, $password, $dbname);
-	if (!$conn) {die("Connection failed: " . mysqli_connect_error());}
+	include 'connectDB.php';
+	$conn = connectDB();
 
 	$query = "SELECT * FROM CompanySign where (cid='".$id."' or cemail='".$id."') AND cpassword='".$cpassword."'";
 

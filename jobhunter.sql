@@ -204,4 +204,11 @@ INSERT INTO `JobNotifications` VALUES ('S001', 'J001', 'C02', '2018-04-14 00:00:
 INSERT INTO `JobNotifications` VALUES ('S001', 'J002', 'C02', '2018-04-05 00:00:00', 'New');
 INSERT INTO `JobNotifications` VALUES ('S001', 'J003', 'C02', '2018-01-01 00:00:00', 'New');
 
--- 
+CREATE TABLE `Forward` (
+  `sid` VARCHAR(5) NOT NULL,
+  `fid` VARCHAR(5) NOT NULL,
+  `jid` VARCHAR(5) NOT NULL,
+  PRIMARY KEY (`sid`, `fid`,`jid`),
+  FOREIGN KEY (`sid`) REFERENCES `Student` (`sid`),
+  FOREIGN KEY (`jid`) REFERENCES `JobInfo` (`jid`),
+  FOREIGN KEY (`fid`) REFERENCES `Friends` (`fid`));

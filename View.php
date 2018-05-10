@@ -4,13 +4,8 @@
 <?php 
 	$jid = $_POST['view'];
 
-	$host="127.0.0.1";
-	$user="root";
-	$password="";
-	$dbname="jobhunter";
-
-	$conn = mysqli_connect($host, $user, $password, $dbname);
-	if (!$conn) {die("Connection failed: " . mysqli_connect_error());}
+	include 'connectDB.php';
+	$conn = connectDB();
 
 
 ?>
@@ -27,7 +22,6 @@
 			echo "<p>Major: ".$row["smajor"]."</p>";
 			echo "<p>GPA: ".$row["sgpa"]."</p>";
 			echo "<p>Interest and other Information: ".$row["sinfo"]."</p>";
-			// echo "<button type='submit' name='resume' value='".$row["sid"]."'>See Resume</button><br>";
 			$r = $row['sresumeaddr'];
 			echo "<a href='$r'>See Resume</a><br>";
 
