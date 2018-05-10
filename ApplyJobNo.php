@@ -15,7 +15,8 @@
 	$result = mysqli_query($conn, $query) or die('Query failed: ' . mysqli_error($conn));
 	
 	if ($result === TRUE) {
-		header("Location: ViewJob.php");
+		$SESSION['sid'] = $sid;
+		header("Location: JobNotifications.php");
 	}
 	else {
 		echo "Error updating record: " . $conn->error;
