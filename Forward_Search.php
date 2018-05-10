@@ -25,8 +25,6 @@
 	$jobname = $_SESSION['jobname'];
 	}
 
-	echo $jobname;
-
 	$conn = connectDB();
 	$query1 = "select fid from Friends where sid='$sid' and fid not in (select fid from Forward where sid='$sid')";
 
@@ -55,7 +53,7 @@
 
 <form action="ViewJob.php" method="POST">
 	<br>
-	<button type="submit" name='jobname' Value="<?php echo $jobname ?>">Return</button>
+	<button type="submit" name='jobname' Value="<?php echo $jobname; ?>">Return</button>
 	<table>
 		<input type = "text" name = "sid" value = "<?php echo $sid; ?>" style = "display: none;" />
 	</table>
