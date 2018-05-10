@@ -10,6 +10,10 @@ $fmt = $row_trigger['fmesTrigger'];
 $fmtFrom = $row_trigger['fmesFrom'];
 $frt = $row_trigger['freqTrigger'];
 $frtFrom = $row_trigger['freqFrom'];
+
+$query1 = "select * from JobNotifications where sid='$sid' and ViewStstus='New' and jid not in (select jid from JobApply where sid = '$sid')";
+$result1 = mysqli_query($conn, $query1) or die('Query failed: ' . mysqli_error($conn));
+
 ?>
 
 <!DOCTYPE html>
@@ -58,6 +62,10 @@ $frtFrom = $row_trigger['freqFrom'];
 		</form>
 		<form method="post" action="JobNotifications.php">
 			<input type="submit" value="Job Notifications">
+			<?php
+				if (mysqli_num_rows($result1) > 0) { echo "New jobs you may interest:)";}
+			?>
+
 		</form>
 		<form method="post" action="ViewCompany.php">
 			<p>Search Company
