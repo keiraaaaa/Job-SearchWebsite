@@ -4,29 +4,29 @@
 	// $jid = $_POST['forward'];
 	// $sid = $_POST['sid'];
 	
-	if (isset($_POST['forward'])) {
-	$jid = $_POST['forward'];
-	}
 	if (isset($_SESSION['jid'])) {
 	$jid = $_SESSION['jid'];
 	}
-
-	if (isset($_POST['sid'])) {
-	$sid = $_POST['sid'];
+	if (isset($_POST['forward'])) {
+	$jid = $_POST['forward'];
 	}
+
 	if (isset($_SESSION['sid'])) {
 	$sid = $_SESSION['sid'];
 	}
-
-	if (isset($_POST['jobname'])) {
-	$jobname = $_POST['jobname'];
+	if (isset($_POST['sid'])) {
+	$sid = $_POST['sid'];
 	}
+
 	if (isset($_SESSION['jobname'])) {
 	$jobname = $_SESSION['jobname'];
 	}
+	if (isset($_POST['jobname'])) {
+	$jobname = $_POST['jobname'];
+	}
 
 	$conn = connectDB();
-	$query1 = "select fid from Friends where sid='$sid' and fid not in (select fid from Forward where sid='$sid')";
+	$query1 = "select fid from Friends where sid='$sid'";
 
     $result1 = mysqli_query($conn, $query1) or die('Query failed: ' . mysqli_error($conn));
 ?>
@@ -59,4 +59,14 @@
 	</table>
 </form>
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jobster</title>
+    <link rel="stylesheet" type="text/css" href="..\css\style.css">
+</head>
+<body>
+
+</body>
+</html>
 

@@ -7,8 +7,10 @@
 	$jobname = $_POST['jobname'];
 
 	$conn = connectDB();
+	$now = new DateTime(null, new DateTimeZone('America/New_York'));
+	$currdate = $now->format('Y-m-d H:i:s');
 
-	$query = "insert into `Forward` values ('$sid','$fid','$jid');";
+	$query = "insert into `FriendMessage` values ('$sid','$fid','$currdate','JobInfo','$jid');";
     $result = mysqli_query($conn, $query) or die('Query failed: ' . mysqli_error($conn));
 
 

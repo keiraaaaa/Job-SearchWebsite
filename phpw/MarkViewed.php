@@ -10,7 +10,7 @@
 	
 	if ($result === TRUE) {
 		$_SESSION['sid'] = $sid;
-		header("Location: mainPage.php");
+		header("Location: ..\php\mainPage.php");
 	}
 	else {
 		echo "Error updating record: " . $conn->error;

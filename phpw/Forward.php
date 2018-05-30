@@ -4,29 +4,29 @@
 	// $jid = $_POST['forward'];
 	// $sid = $_POST['sid'];
 	
-	if (isset($_POST['forward'])) {
-	$jid = $_POST['forward'];
-	}
 	if (isset($_SESSION['jid'])) {
 	$jid = $_SESSION['jid'];
 	}
-
-	if (isset($_POST['sid'])) {
-	$sid = $_POST['sid'];
+	if (isset($_POST['forward'])) {
+	$jid = $_POST['forward'];
 	}
+
 	if (isset($_SESSION['sid'])) {
 	$sid = $_SESSION['sid'];
 	}
+	if (isset($_POST['sid'])) {
+	$sid = $_POST['sid'];
+	}
 
 	$conn = connectDB();
-	$query1 = "select fid from Friends where sid='$sid' and fid not in (select fid from Forward where sid='$sid')";
+	$query1 = "select fid from Friends where sid='$sid'";
 
     $result1 = mysqli_query($conn, $query1) or die('Query failed: ' . mysqli_error($conn));
 ?>
 
 <form action="ForwardTo.php" method="POST">
 	<?php
-	    echo "<h2>Forward To:</h2>";
+	    echo "<br><h2>Choose Friend</h2>";
 		if (mysqli_num_rows($result1) > 0) {
 			while($row1 = mysqli_fetch_assoc($result1)) {
 			echo "<p>".$row1["fid"]."</p>";
@@ -42,3 +42,13 @@
 		<input type = "text" name = "jid" value = "<?php echo $jid; ?>" style = "display: none;" />
 	</table>
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jobster</title>
+    <link rel="stylesheet" type="text/css" href="..\css\style.css">
+</head>
+<body>
+
+</body>
+</html>

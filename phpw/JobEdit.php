@@ -1,28 +1,37 @@
-<!DOCTYPE html>
-<html>
-
 <?php
-	$cid = $_POST['cid'];
+	session_start();
 
 	include 'connectDB.php';
 	$conn = connectDB();
+
+
+	$cid = $_POST['cid'];
+	$_SESSION['cid'] = $cid;
 
 	date_default_timezone_set('America/New_York');
 	$date = date('Y-m-d H:i:s');
 
 ?>
 
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jobster</title>
+	<link rel="stylesheet" type="text/css" href="..\css\style.css">
+</head>
+
+
 <form action="JobAdd.php" method="POST">
 
-	<h1>Create new position now!</h1>
+	<h2>Create new position now!</h2>
 	<br>
-	<p><strong>Job Title:</strong><input type="text" name="jtitle" size="48"></p>
-	<p><strong>City:</strong><input type="text" name="jcity" size="48"></p>
-	<p><strong>State:</strong><input type="text" name="jstate" size="48"></p>
-	<p><strong>Estimate Salary:</strong><input type="text" name="jsalary" size="48"></p>
-	<p><strong>Desired Degree:</strong><input type="text" name="jdegree" size="48"></p>
-	<p><strong>Desired Major:</strong><input type="text" name="jmajor" size="48"></p>
-	<p><strong>Description:</strong><input type="text" name="jdesc" size="48"></p>
+	<p><strong>Job Title:</strong><input type="text" name="jtitle" size="48" required="required"></p>
+	<p><strong>City:</strong><input type="text" name="jcity" size="48" required="required"></p>
+	<p><strong>State:</strong><input type="text" name="jstate" size="48" required="required"></p>
+	<p><strong>Estimate Salary:</strong><input type="number" name="jsalary" size="48" required="required"></p>
+	<p><strong>Desired Degree:</strong><input type="text" name="jdegree" size="48" required="required"></p>
+	<p><strong>Desired Major:</strong><input type="text" name="jmajor" size="48" required="required"></p>
+	<p><strong>Description:</strong><input type="text" name="jdesc" size="48" required="required"></p>
 
 
 	<!-- <input type="submit" value="Looks good, add this position!" name="button1"> -->
@@ -33,5 +42,5 @@
 		<input type = "text" name = "cid" value = "<?php echo $cid; ?>" style = "display: none;" />
 	</table>
 </form>
-
+<br></br><p class='change_link'><a href='JobPosting.php' class='tosignup'>Return</a></p>
 

@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html>
-<body>
-
 <?php
-@session_start();
-?>
-
-
-<?php
+	@session_start();
 
  	$s = $_SERVER['HTTP_REFERER'];
-	if ($s=="http://localhost/project/Company_SignUp.php"){
+	if ($s=="http://localhost/Jobster-WebDevelop/phpw/Company_SignUp.php"){
 		$cname = $_POST['cname'];
 		$cemail = $_POST['cemail'];
 		$ccity = $_POST['ccity'];
@@ -35,19 +27,31 @@
 	}
 ?>	
 
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jobster</title>
+	<link rel="stylesheet" type="text/css" href="..\css\style.css">
+</head>
 
+<body>
+	<div class="container">
 	<center><h1>Company</h1></center><br>
 	<form action = "Security.php" method = "POST">
 	<center>
-		ID: <input type="text" name="cid" placeholder="LoginID/Email" size="48">
+		ID:       <input type="text" name="cid" placeholder="LoginID/Email" size="40" required="required">
 		<br><br>
-		Password: <input type="text" name="cpassword" size="48">
+		Password: <input type="Password" name="cpassword" size="40" required="required">
 	</center><br>
 	<center>
-		<button type="submit" name="button1" value="SignIn">Sign in</button>
-		<button type="submit" name="button2" value="SignUp" formaction="Company_SignUp.php">Sign up</button>
+		<input type="submit" name="button1" value="LogIn"></input>
+		<p class="change_link">Not a member yet ?
+	    		<a href="Company_SignUp.php" class="tosignup">Join us</a>
+    	</p>
+		<br></br><a href='..\index.html'>Return to Start Page</a>
 	</center>
 	</form>
+	</div>
 
 
 	<?php 
@@ -58,7 +62,5 @@
 		   session_write_close();
 		}
 	?>
-
-
 </body>
 </html>

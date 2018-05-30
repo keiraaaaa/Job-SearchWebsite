@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<title>Jobster</title>
+	<link rel="stylesheet" type="text/css" href="..\css\style.css">
+</head>
 
 <?php
 
 	@session_start();
 
 	$cid = $_SESSION['cid'];
+	$_SESSION['cid'] = $cid;
 
 	include 'connectDB.php';
 	$conn = connectDB();
@@ -18,9 +23,8 @@
 			$query1 = "SELECT * FROM Company where cid = '".$cid."'";
 			$result1 = mysqli_query($conn, $query1);
 			$row = mysqli_fetch_assoc($result1);
-			echo "<br>Welcome back <strong><i>".$row["cname"]."</i></strong>!";
-			echo "<p>Headquarters: ".$row["ccity"].", ".$row["cstate"]."</p>";
-			echo "<p>Industry: ".$row["cindustry"]."</P>";
+			echo "<br><h2>Welcome back <strong><i>".$row["cname"]."</i></strong>!</h2>";
+			echo "<h3><u>Headquarters</u>: ".$row["ccity"].", ".$row["cstate"]." ; <u>Industry</u>: ".$row["cindustry"]."</h3>";
 		?>
 	</div>
 
@@ -55,7 +59,7 @@
 			} 
 
 		if (mysqli_num_rows($result2) > 0) {
-			echo "<strong>Posted jobs.</strong>";
+			// echo "<strong>Posted jobs.</strong>";
 		}
 		else {echo "<strong>No posed job.</strong>";}
 
@@ -65,7 +69,8 @@
 			<input type = "text" name = "cid" value = "<?php echo $cid; ?>" style = "display: none;" />
 		</table>
 
-		<button type="submit" name="add" value="add" formaction="JobEdit.php">Add more jobs</button>
+		<input type="submit" name="add" value="Add more jobs" formaction="JobEdit.php"></input>
+		<br></br><p class='change_link'><a href='Company_SignIn.php' class='tosignup'>Sign out</a></p>
 
 	</div>
 
